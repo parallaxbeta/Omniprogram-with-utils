@@ -54,9 +54,10 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="Program.fs" />
+    <None Include="Program.fsx" />
     <None Include="App.config" />
     <Content Include="build.txt" />
+    <None Include="CloudComp.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
