@@ -14,7 +14,8 @@ let runtime = MBrace.InitLocal 4
 let compile input cloud{
     
 }
-*)
+
+
 // Assembly references for intellisense purposes only
 #r "Nessos.MBrace"
 #r "Nessos.MBrace.Utils"
@@ -33,25 +34,19 @@ let hello () =
     cloud {
         return "hello, world!"
     }
+type cloudComp (isLocal : bool, ?isMaster : bool, ?runtimes : int, ?URIs : string list) = class
+    ,e,x.
+    member x.init = 
+        if isLocal then
+            static public member runtime = MBrace.InitLocal 4
+        else
+            static public member runtime = MBrace.Boot(URIs : string list)
 
-
+end
 // create a local-only runtime
 let init (runtimes:int)= // create a local-only runtime
         let runtime = MBrace.InitLocal 4
         runtime
-
-let init (runtimes, URIs:string list)= // create a remote runtime
-    if isLocal then
-        let runtime = MBrace.InitLocal 4
-        runtime
-    else 
-         if isMaster then
-            let runtime = MBrace.Boot(URIs)
-            runtime
-         else
-            let runtime = MBrace.ConnectAsync()
-            0
-let runtime = MBrace.InitLocal 4
 
 // upload & execute
 runtime.Run <@ hello () @>
@@ -65,3 +60,4 @@ proc.AwaitResult()
 
 // show information
 //runtime.ShowProcessInfo()
+*)

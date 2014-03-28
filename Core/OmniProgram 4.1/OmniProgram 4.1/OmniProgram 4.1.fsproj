@@ -58,6 +58,7 @@
     <None Include="App.config" />
     <Content Include="build.txt" />
     <None Include="CloudComp.fsx" />
+    <None Include="Globals.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
