@@ -19,7 +19,9 @@ let init =
     //MBraceSettings.StoreProvider <- LocalFS
     printf "%s"CopyrightNotice
     0
-    
+let ask (question : string) : string =    
+    Console.Write(question)
+    Console.ReadLine()
 type user (username : string, password : string) = class
     member private x.password = password
     member public x.username = username
@@ -27,15 +29,32 @@ type user (username : string, password : string) = class
     member public x.changePassword (newPassword:string) = x.password = newPassword   
     member public x.passwordVerify (input : int) = if input = password.GetHashCode() then true else false
 end
-let mutable currUser = new user ("anon", "")
-let allUsers = [currUser;]
-let login = 0
+let mutable anonUser = new user ("anon", "")
+let mutable allUsers : user list = [anonUser;]
+let mutable loc : int = 100
+let mutable allUsersCurrent = anonUser
+let login = 
+    let u = ask("Username:\n>")
+    let isRightUser (username : string, usertest : user) = 
+        if usertest.username = username then true else false
+    let p = ask("Password:\n>")
+    let imaginaryUser = new user (u,p)
+    let mutable i = 0
+    let mutable found = false
+    while i < allUsers.Length || found = false do 
+        if  allUsers.[i] = imaginaryUser then found <- true
+    if found then
+        let loc = Array.find(isRightUser)
+        printf "loc = %A" loc
+    else
+        printf "failed"
+    0
 let newFunc (inputs : string []) = 
     if inputs.[0] = "user" then
-        currUser <- new user (inputs.[1], inputs.[2])
+        allUsers.[allUsers.Length] = new user (inputs.[1], inputs.[2]) |> ignore
     0
-//let recombineStr (input : string []) =
-   // input |> String.Join ' '
+let recombineStr (input : string []) : string =
+    input |> String.concat " "
 let rec commandDetermine (input : string) =
         
         let lCaseInput : string = input.ToLower()
@@ -43,7 +62,6 @@ let rec commandDetermine (input : string) =
         match data.[0] with 
             |"login" -> login
             |"new" -> newFunc (data.[1..])
-            |"please" -> commandDetermine data.[1..]
             |_ -> 1
  
  
