@@ -9,11 +9,12 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>OmniProgram_4._1</RootNamespace>
     <AssemblyName>OmniProgram_4._1</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.3.1.0</TargetFSharpCoreVersion>
     <Name>OmniProgram 4.1</Name>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,11 +58,12 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <Compile Include="Program.fsx" />
-    <None Include="App.config" />
+    <None Include="Program.fsx">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="CloudComp.fsx" />
-    <None Include="Globals.fsx" />
-    <Compile Include="Build.fs" />
+    <None Include="STRCOMP.fsx" />
+    <None Include="CoreFunc.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />
