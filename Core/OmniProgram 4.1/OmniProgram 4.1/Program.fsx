@@ -1,5 +1,6 @@
 ﻿#light
 #load "Main.fsx"
+#I
 open Main
 open Main.CoreFunc
 open Main

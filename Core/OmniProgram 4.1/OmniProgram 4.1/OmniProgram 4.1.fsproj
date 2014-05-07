@@ -56,7 +56,7 @@
   </Choose>
   <Import Project="$(FSharpTargetsPath)" />
   <ItemGroup>
-    <None Include="Program.fsx" />
+    <Compile Include="Program.fsx" />
     <None Include="CloudComp.fsx" />
     <None Include="Globals.fsx" />
     <None Include="Main.fsx" />
