@@ -1,4 +1,4 @@
-﻿module Main.StringCompile
+﻿module Omniprogram.StringCompile
 #r "FSharp.Compiler.dll"
 #r "FSharp.Compiler.CodeDom.dll"
 open System 
@@ -8,7 +8,7 @@ open Microsoft.FSharp.Compiler.CodeDom
 // Our (very simple) code string consisting of just one function: unit -> string 
 let codeString =
     "module fsharp
-        let main() = 
+        let Omniprogram() = 
             printf \"Hello World\""
 
 // Assembly path to keep compiled code
@@ -27,7 +27,7 @@ let CompileFSharpCode(codeString, synthAssemblyPath) =
 if CompileFSharpCode(codeString, synthAssemblyPath) then
     try
         let synthAssembly = Reflection.Assembly.LoadFrom(synthAssemblyPath) 
-        let synthMethod  = synthAssembly.GetType("fsharp").GetMethod("main") 
+        let synthMethod  = synthAssembly.GetType("fsharp").GetMethod("Omniprogram") 
         printfn "Success: %A" (synthMethod.Invoke(null, null))
     with
         |_ -> failwith "module non-existent"

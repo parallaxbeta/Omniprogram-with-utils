@@ -59,8 +59,9 @@
     <Compile Include="Program.fsx" />
     <None Include="CloudComp.fsx" />
     <None Include="Globals.fsx" />
-    <None Include="Main.fsx" />
     <None Include="STRCOMP.fsx" />
+    <None Include="Omniprogram.fsx" />
+    <None Include="GE.fsx" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="mscorlib" />

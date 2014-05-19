@@ -1,9 +1,9 @@
 ﻿#light
-#load "Main.fsx"
-#I
-open Main
-open Main.CoreFunc
-open Main
+#load "./Omniprogram.fsx"
+#load "./GE.fsx"
+open Omniprogram
+open Omniprogram.CoreFunc
+open Omniprogram.user
 open System
 open System.IO
 open System.Security.Cryptography
@@ -14,7 +14,7 @@ open Nessos.MBrace.CloudModule
 open Nessos.MBrace.CloudRefModule
 open Nessos.MBrace.CloudExtensions
 #load "STRCOMP.fsx"
-open Main.StringCompile
+open Omniprogram.StringCompile
 //__________________________________________________________________________________________________________________________________________________________________________________\\
 
 let toInt input = int input
@@ -28,7 +28,7 @@ let init =
     0
 let login = 
     let u = ask("Username:\n>")
-    let isRightUser (username : string, usertest : user) = 
+    let isRightUser (username : string, usertest : User) = 
         if usertest.username = username then true else false
     let p = ask("Password:\n>")
     let imaginaryUser = new user (u,p)
